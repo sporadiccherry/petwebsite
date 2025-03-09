@@ -26,7 +26,7 @@ const auth = getAuth();
 
 /** SHOP PAGE**/
 
-async function getShopItems(db) {
+async function getPets(db) {
     // this gets the "food_shop" document from firestore
     const userinfoDoc = doc(db, "users", "testuser");
     const userinfoSnap = await getDoc(userinfoDoc);
@@ -36,24 +36,14 @@ async function getShopItems(db) {
     // if there's a shopItems id on the page, do the following
     if (userdetails != null && userinfoSnap.exists()) {
 		
-		
         // this gets the data from the "food_shop" document
-        var foodShop = userinfoSnap.data();
-		
-		
-        // this gets all the keys in the "food_shop" map (name, price, etc...)
-        var foodShopKeys = Object.keys(foodShop);
-        console.log(foodShop);
-		
+        var petData = userinfoSnap.data();
 		
         // this iterates through the items in "food_shop" and displays them on the page
-        for(let i = 0; i < foodShopKeys.length; i++) {
-            let key = foodShopKeys[i]
-            userdetails.innerHTML += foodShop[key]["name"] + ": " + foodShop[key]["price"] + "<br>";
-        }
+        userdetails.innerHTML += petData["pet"]["petName"] + ": " + petData["pet"]["petType"] + "<br>";
     }
 }
 
 
 // this just loads the shop function
-getShopItems(db)
+getPets(db)
