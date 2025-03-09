@@ -38,6 +38,7 @@ async function getPets(db) {
 		
         // this gets the data from the "food_shop" document
         var petData = userinfoSnap.data();
+		console.log(petData);
 		
         // this iterates through the items in "food_shop" and displays them on the page
         userdetails.innerHTML += petData["pet"]["petName"] + ": " + petData["pet"]["petType"] + "<br>";
