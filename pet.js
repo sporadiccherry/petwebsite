@@ -43,6 +43,11 @@ async function getPets(db) {
         // this iterates through the items in "food_shop" and displays them on the page
         userdetails.innerHTML += petData["pet"]["petName"] + ": " + petData["pet"]["petType"] + "<br>";
     }
+	else
+	{	
+		console.log(userDetails);
+		console.log(userinfoSnap);
+	}
 }
 
 
